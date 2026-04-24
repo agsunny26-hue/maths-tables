@@ -19,8 +19,8 @@
     .card {
       background: white;
       border-radius: 22px;
-      padding: 28px 22px;
-      max-width: 460px;
+      padding: 24px 20px;
+      max-width: 420px;
       width: 100%;
       box-shadow: 0 16px 48px rgba(0,0,0,0.25);
       text-align: center;
@@ -38,7 +38,6 @@
       margin-bottom: 12px;
       text-align: left;
     }
-
     .sg-label {
       display: block;
       font-weight: 700;
@@ -47,14 +46,13 @@
       margin-bottom: 10px;
     }
 
-    /* ── Table toggle pills (static HTML) ── */
+    /* Table pills */
     .pills {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 6px;
       margin-bottom: 8px;
     }
-
     .pill {
       display: flex;
       align-items: center;
@@ -68,23 +66,13 @@
       font-size: 1rem;
       cursor: pointer;
       user-select: none;
-      transition: background 0.12s, color 0.12s, border-color 0.12s;
-      /* large touch target */
       -webkit-user-select: none;
+      touch-action: manipulation;
+      transition: background 0.12s, color 0.12s, border-color 0.12s;
     }
+    .pill.on { background: #7c5cfc; border-color: #7c5cfc; color: white; }
 
-    .pill.on {
-      background: #7c5cfc;
-      border-color: #7c5cfc;
-      color: white;
-    }
-
-    .pill-toggles {
-      display: flex;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
+    .pill-toggles { display: flex; gap: 8px; margin-top: 6px; }
     .btn-tiny {
       flex: 1;
       padding: 8px 6px;
@@ -96,11 +84,11 @@
       font-weight: 600;
       cursor: pointer;
       min-height: 36px;
+      touch-action: manipulation;
     }
 
-    /* ── Custom range slider (iOS-safe) ── */
+    /* Custom range slider */
     .range-row { display: flex; align-items: center; gap: 10px; }
-
     input[type="range"] {
       flex: 1;
       -webkit-appearance: none;
@@ -111,39 +99,26 @@
       outline: none;
       cursor: pointer;
     }
-
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       border-radius: 50%;
       background: #7c5cfc;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(124,92,252,0.4);
     }
-
     input[type="range"]::-moz-range-thumb {
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       border-radius: 50%;
       background: #7c5cfc;
       cursor: pointer;
       border: none;
     }
-
-    .range-value {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #7c5cfc;
-      min-width: 42px;
-      text-align: right;
-    }
-
+    .range-value { font-size: 1.2rem; font-weight: 700; color: #7c5cfc; min-width: 42px; text-align: right; }
     .hint { font-size: 0.74rem; color: #aaa; margin-top: 6px; }
-
     .warning { font-size: 0.8rem; color: #ef4444; margin-top: 6px; display: none; }
 
-    /* ── Buttons ── */
+    /* Buttons */
     .btn {
       display: block;
       width: 100%;
@@ -157,17 +132,12 @@
       min-height: 52px;
       touch-action: manipulation;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #7c5cfc, #4c3799);
       color: white;
       box-shadow: 0 6px 18px rgba(124,92,252,0.4);
     }
-
-    .btn-secondary {
-      background: #f0ecff;
-      color: #4c3799;
-    }
+    .btn-secondary { background: #f0ecff; color: #4c3799; }
 
     /* ── Quiz ── */
     #quiz { display: none; }
@@ -178,130 +148,115 @@
       align-items: center;
       margin-bottom: 6px;
     }
-
     .q-counter { font-size: 0.8rem; color: #aaa; }
-
     .quit-btn {
-      background: none;
-      border: none;
-      color: #ccc;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 6px 8px;
-      min-height: 36px;
-      touch-action: manipulation;
+      background: none; border: none;
+      color: #ccc; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; padding: 6px 8px;
+      min-height: 36px; touch-action: manipulation;
     }
 
-    .progress-wrap {
+    /* Progress bar */
+    .bar-wrap {
       background: #ede9ff;
       border-radius: 50px;
       height: 8px;
-      margin-bottom: 24px;
+      margin-bottom: 6px;
       overflow: hidden;
     }
-
-    .progress-fill {
+    .bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #7c5cfc, #b08aff);
       border-radius: 50px;
       transition: width 0.3s ease;
     }
+    .bar-fill.progress { background: linear-gradient(90deg, #7c5cfc, #b08aff); }
+
+    /* Timer bar */
+    .bar-fill.timer { transition: width 0.1s linear, background 0.3s; }
 
     .question-text {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
       color: #2d1f6e;
-      margin-bottom: 22px;
+      margin: 16px 0 14px;
       letter-spacing: 1px;
     }
 
-    /* Answer input */
-    .answer-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .answer-input {
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
+    /* Answer display (replaces input) */
+    .answer-display {
       width: 150px;
-      padding: 12px 14px;
+      margin: 0 auto 16px;
+      padding: 10px 14px;
       border: 3px solid #ddd;
       border-radius: 14px;
-      outline: none;
-      color: #2d1f6e;
-      -webkit-appearance: none;
-      appearance: none;
-      background: white;
-      /* prevent iOS zoom: font-size must be >= 16px equivalent */
-    }
-
-    .answer-input:focus { border-color: #7c5cfc; }
-    .answer-input:disabled { background: #f5f5f5; color: #bbb; border-color: #eee; }
-
-    .tap-hint { font-size: 0.76rem; color: #bbb; }
-
-    /* Timer + submit */
-    .timer-submit {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .timer-svg { transform: rotate(-90deg); display: block; }
-    .timer-bg  { fill: none; stroke: #ede9ff; stroke-width: 8; }
-    .timer-arc {
-      fill: none;
-      stroke: #7c5cfc;
-      stroke-width: 8;
-      stroke-linecap: round;
-      transition: stroke-dashoffset 0.1s linear, stroke 0.25s;
-    }
-    .timer-lbl {
-      font-size: 1.3rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      fill: #4c3799;
-      dominant-baseline: middle;
-      text-anchor: middle;
+      color: #2d1f6e;
+      text-align: center;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s;
+    }
+    .answer-display.has-value { border-color: #7c5cfc; }
+    .answer-display.empty { color: #ccc; }
+
+    /* Keypad */
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 320px;
+      margin: 0 auto;
     }
 
-    .btn-submit {
-      background: linear-gradient(135deg, #7c5cfc, #4c3799);
-      color: white;
+    .key {
+      height: 62px;
+      border-radius: 12px;
       border: none;
-      border-radius: 50px;
-      padding: 15px 48px;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(124,92,252,0.4);
-      min-width: 160px;
-      min-height: 52px;
+      background: #f0ecff;
+      color: #4c3799;
       touch-action: manipulation;
+      transition: background 0.08s, transform 0.08s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    .key:active { transform: scale(0.91); }
+
+    .key-num:active { background: #ddd6fe; }
+
+    .key-del {
+      background: #fff0f0;
+      color: #ef4444;
+      font-size: 1.3rem;
+    }
+    .key-del:active { background: #fecaca; }
+
+    .key-submit {
+      background: linear-gradient(135deg, #7c5cfc, #4c3799);
+      color: white;
+      font-size: 1.6rem;
+      box-shadow: 0 3px 10px rgba(124,92,252,0.35);
+    }
+    .key-submit:active { background: #4c3799; }
 
     /* ── Results ── */
     #results { display: none; }
 
     .score-circle {
-      width: 120px;
-      height: 120px;
+      width: 120px; height: 120px;
       border-radius: 50%;
       background: linear-gradient(135deg, #7c5cfc, #4c3799);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
       margin: 0 auto 16px;
       box-shadow: 0 8px 24px rgba(124,92,252,0.35);
     }
-
     .score-big { font-size: 1.9rem; font-weight: 800; color: white; line-height: 1; }
     .score-pct { font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.75); margin-top: 2px; }
 
@@ -328,23 +283,15 @@
       padding: 12px 14px;
       margin-bottom: 16px;
     }
-
     .wrong-list h3 {
-      font-size: 0.78rem;
-      color: #ef4444;
-      margin-bottom: 8px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 0.78rem; color: #ef4444;
+      margin-bottom: 8px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
     }
-
     .wrong-item {
-      font-size: 0.88rem;
-      color: #555;
-      padding: 4px 0;
-      border-bottom: 1px solid #fecaca;
+      font-size: 0.88rem; color: #555;
+      padding: 4px 0; border-bottom: 1px solid #fecaca;
     }
-
     .wrong-item:last-child { border-bottom: none; }
     .your-ans  { color: #ef4444; font-weight: 700; }
     .right-ans { color: #22c55e; font-weight: 700; }
@@ -361,7 +308,6 @@
     <h1>Times Tables!</h1>
     <p class="subtitle">Pick your settings and go!</p>
 
-    <!-- Table selection — static HTML pills, toggled via JS -->
     <div class="sg">
       <span class="sg-label">🔢 Choose your times tables</span>
       <div class="pills" id="pillsGrid">
@@ -385,7 +331,6 @@
       <p class="warning" id="tableWarning">Pick at least one table!</p>
     </div>
 
-    <!-- Time per question -->
     <div class="sg">
       <span class="sg-label">⏱ Time per question: <span id="timeVal">4</span>s</span>
       <div class="range-row">
@@ -394,7 +339,6 @@
       <p class="hint">2 s = super fast &nbsp;·&nbsp; 6 s = easy</p>
     </div>
 
-    <!-- Number of questions -->
     <div class="sg">
       <span class="sg-label">📋 Questions: <span id="qVal">25</span></span>
       <div class="range-row">
@@ -412,27 +356,32 @@
       <span class="q-counter" id="qCounter">Question 1 of 25</span>
       <button class="quit-btn" id="quitBtn">✕ Quit</button>
     </div>
-    <div class="progress-wrap">
-      <div class="progress-fill" id="progressBar" style="width:0%"></div>
+
+    <div class="bar-wrap" style="margin-bottom:6px">
+      <div class="bar-fill progress" id="progressBar" style="width:0%"></div>
+    </div>
+
+    <div class="bar-wrap" style="margin-bottom:0">
+      <div class="bar-fill timer" id="timerBar" style="width:100%;background:#7c5cfc"></div>
     </div>
 
     <div class="question-text" id="questionText">6 × 7 = ?</div>
 
-    <div class="answer-wrap">
-      <input class="answer-input" type="text" id="answerInput"
-             inputmode="numeric" pattern="[0-9]*"
-             placeholder="?" autocomplete="off" />
-      <span class="tap-hint" id="tapHint">Tap to type your answer</span>
-    </div>
+    <div class="answer-display empty" id="answerDisplay">?</div>
 
-    <div class="timer-submit">
-      <svg class="timer-svg" width="84" height="84" viewBox="0 0 84 84">
-        <circle class="timer-bg"  cx="42" cy="42" r="34"/>
-        <circle class="timer-arc" id="timerArc" cx="42" cy="42" r="34"
-          stroke-dasharray="213.63" stroke-dashoffset="0"/>
-        <text class="timer-lbl" id="timerLbl" x="42" y="42">4</text>
-      </svg>
-      <button class="btn-submit" id="submitBtn">Submit ✓</button>
+    <div class="keypad">
+      <button class="key key-num" data-d="1">1</button>
+      <button class="key key-num" data-d="2">2</button>
+      <button class="key key-num" data-d="3">3</button>
+      <button class="key key-num" data-d="4">4</button>
+      <button class="key key-num" data-d="5">5</button>
+      <button class="key key-num" data-d="6">6</button>
+      <button class="key key-num" data-d="7">7</button>
+      <button class="key key-num" data-d="8">8</button>
+      <button class="key key-num" data-d="9">9</button>
+      <button class="key key-del" id="delBtn">⌫</button>
+      <button class="key key-num" data-d="0">0</button>
+      <button class="key key-submit" id="submitBtn">✓</button>
     </div>
   </div>
 
@@ -467,7 +416,7 @@
     <button class="btn btn-primary" id="restartBtn">🔄 Play Again</button>
   </div>
 
-</div><!-- .card -->
+</div>
 
 <script>
 // ── State ────────────────────────────────────────────────────────────────────
@@ -476,9 +425,9 @@ var totalQ = 25, timeSec = 4;
 var currentQ = 0, score = 0, wrong = [];
 var timerInterval = null, timeLeft = 0, timerRunning = false;
 var currentQuestion = null;
-var CIRC = 2 * Math.PI * 34; // 213.63
+var currentAnswer = '';
 
-// ── Screen switching ─────────────────────────────────────────────────────────
+// ── Screens ──────────────────────────────────────────────────────────────────
 function show(id) {
   ['settings','quiz','results'].forEach(function(s) {
     document.getElementById(s).style.display = 'none';
@@ -518,19 +467,18 @@ document.getElementById('clrAllBtn').addEventListener('click', function() {
 document.getElementById('timeRange').addEventListener('input', function() {
   document.getElementById('timeVal').textContent = this.value;
 });
-
 document.getElementById('qRange').addEventListener('input', function() {
   document.getElementById('qVal').textContent = this.value;
 });
 
-// ── Start ────────────────────────────────────────────────────────────────────
+// ── Start / restart / quit ────────────────────────────────────────────────────
 document.getElementById('startBtn').addEventListener('click', function() {
   if (selectedTables.length === 0) {
     document.getElementById('tableWarning').style.display = 'block';
     return;
   }
-  totalQ   = parseInt(document.getElementById('qRange').value);
-  timeSec  = parseInt(document.getElementById('timeRange').value);
+  totalQ  = parseInt(document.getElementById('qRange').value);
+  timeSec = parseInt(document.getElementById('timeRange').value);
   currentQ = 0; score = 0; wrong = [];
   show('quiz');
   nextQuestion();
@@ -544,42 +492,74 @@ document.getElementById('quitBtn').addEventListener('click', function() {
   show('settings');
 });
 
-// ── Questions ────────────────────────────────────────────────────────────────
+// ── Keypad ───────────────────────────────────────────────────────────────────
+document.getElementById('submitBtn').addEventListener('click', doSubmit);
+document.getElementById('delBtn').addEventListener('click', delDigit);
+
+document.querySelector('.keypad').addEventListener('click', function(e) {
+  var key = e.target.closest('.key-num');
+  if (!key) return;
+  addDigit(key.dataset.d);
+});
+
+// Desktop keyboard support
+document.addEventListener('keydown', function(e) {
+  if (!timerRunning) return;
+  if (e.key >= '0' && e.key <= '9') { addDigit(e.key); return; }
+  if (e.key === 'Backspace')         { delDigit();      return; }
+  if (e.key === 'Enter')             { doSubmit();      return; }
+});
+
+function addDigit(d) {
+  if (!timerRunning) return;
+  if (currentAnswer.length >= 3) return;
+  currentAnswer += d;
+  refreshDisplay();
+}
+
+function delDigit() {
+  if (!timerRunning) return;
+  currentAnswer = currentAnswer.slice(0, -1);
+  refreshDisplay();
+}
+
+function refreshDisplay() {
+  var el = document.getElementById('answerDisplay');
+  if (currentAnswer === '') {
+    el.textContent = '?';
+    el.className = 'answer-display empty';
+  } else {
+    el.textContent = currentAnswer;
+    el.className = 'answer-display has-value';
+  }
+}
+
+// ── Questions ─────────────────────────────────────────────────────────────────
 function randQ() {
   var a = selectedTables[Math.floor(Math.random() * selectedTables.length)];
   var b = Math.floor(Math.random() * 12) + 1;
-  return { a: a, b: b, ans: a * b, lbl: a + ' × ' + b };
+  return { a: a, b: b, ans: a * b, lbl: a + ' \u00d7 ' + b };
 }
 
 function nextQuestion() {
   clearInterval(timerInterval);
   timerRunning = false;
+  currentAnswer = '';
   currentQuestion = randQ();
   currentQ++;
 
-  document.getElementById('qCounter').textContent = 'Question ' + currentQ + ' of ' + totalQ;
-  document.getElementById('progressBar').style.width = ((currentQ - 1) / totalQ * 100) + '%';
+  document.getElementById('qCounter').textContent =
+    'Question ' + currentQ + ' of ' + totalQ;
+  document.getElementById('progressBar').style.width =
+    ((currentQ - 1) / totalQ * 100) + '%';
   document.getElementById('questionText').textContent =
-    currentQuestion.a + ' × ' + currentQuestion.b + ' = ?';
+    currentQuestion.a + ' \u00d7 ' + currentQuestion.b + ' = ?';
 
-  var inp = document.getElementById('answerInput');
-  inp.value = '';
-  inp.disabled = false;
-  document.getElementById('tapHint').style.display = 'block';
-
-  // Reset arc
-  var arc = document.getElementById('timerArc');
-  arc.style.strokeDashoffset = '0';
-  arc.style.stroke = '#7c5cfc';
-  document.getElementById('timerLbl').textContent = timeSec;
-
+  refreshDisplay();
   startTimer();
-
-  // focus only works from a direct user-gesture context (first question on desktop)
-  try { inp.focus(); } catch(e) {}
 }
 
-// ── Timer ────────────────────────────────────────────────────────────────────
+// ── Timer bar ─────────────────────────────────────────────────────────────────
 function startTimer() {
   timeLeft = timeSec * 10;
   timerRunning = true;
@@ -597,39 +577,24 @@ function startTimer() {
 
 function renderTimer() {
   var frac = timeLeft / (timeSec * 10);
-  var arc  = document.getElementById('timerArc');
-  arc.style.strokeDashoffset = CIRC * (1 - frac);
-  document.getElementById('timerLbl').textContent = Math.ceil(timeLeft / 10);
-  if      (frac > 0.5)  arc.style.stroke = '#7c5cfc';
-  else if (frac > 0.25) arc.style.stroke = '#f59e0b';
-  else                  arc.style.stroke = '#ef4444';
+  var bar  = document.getElementById('timerBar');
+  bar.style.width = (frac * 100) + '%';
+  if      (frac > 0.5)  bar.style.background = '#7c5cfc';
+  else if (frac > 0.25) bar.style.background = '#f59e0b';
+  else                  bar.style.background = '#ef4444';
 }
 
 function onTimeout() {
-  document.getElementById('answerInput').disabled = true;
   wrong.push({ lbl: currentQuestion.lbl, yours: '—', ans: currentQuestion.ans });
   advance();
 }
 
-// ── Submit ───────────────────────────────────────────────────────────────────
-document.getElementById('answerInput').addEventListener('focus', function() {
-  document.getElementById('tapHint').style.display = 'none';
-});
-
-document.getElementById('answerInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') doSubmit();
-});
-
-document.getElementById('submitBtn').addEventListener('click', doSubmit);
-
+// ── Submit ────────────────────────────────────────────────────────────────────
 function doSubmit() {
-  if (!timerRunning) return;
-  var raw = document.getElementById('answerInput').value.trim();
-  if (raw === '') return;
+  if (!timerRunning || currentAnswer === '') return;
   clearInterval(timerInterval);
   timerRunning = false;
-  document.getElementById('answerInput').disabled = true;
-  var userAns = parseInt(raw, 10);
+  var userAns = parseInt(currentAnswer, 10);
   if (userAns === currentQuestion.ans) {
     score++;
   } else {
@@ -645,19 +610,19 @@ function advance() {
   }, 300);
 }
 
-// ── Results ──────────────────────────────────────────────────────────────────
+// ── Results ───────────────────────────────────────────────────────────────────
 function showResults() {
   clearInterval(timerInterval);
   show('results');
   var pct = Math.round(score / totalQ * 100);
-  document.getElementById('scoreBig').textContent = score + '/' + totalQ;
-  document.getElementById('scorePct').textContent = pct + '%';
-  document.getElementById('cntCorrect').textContent = score;
-  document.getElementById('cntWrong').textContent   = wrong.length;
+  document.getElementById('scoreBig').textContent    = score + '/' + totalQ;
+  document.getElementById('scorePct').textContent    = pct + '%';
+  document.getElementById('cntCorrect').textContent  = score;
+  document.getElementById('cntWrong').textContent    = wrong.length;
   document.getElementById('resSub').textContent =
     'You got ' + score + ' out of ' + totalQ + ' correct.';
 
-  var sorted = selectedTables.slice().sort(function(a,b){return a-b;});
+  var sorted = selectedTables.slice().sort(function(a,b) { return a-b; });
   document.getElementById('tablesUsed').textContent =
     'Tables practised: ' + sorted.join(', ');
 
@@ -674,7 +639,7 @@ function showResults() {
     document.getElementById('wrongItems').innerHTML = wrong.map(function(w) {
       return '<div class="wrong-item">' +
         w.lbl + ' = <span class="your-ans">' + w.yours + '</span>' +
-        ' → correct: <span class="right-ans">' + w.ans + '</span>' +
+        ' \u2192 correct: <span class="right-ans">' + w.ans + '</span>' +
         '</div>';
     }).join('');
   } else {
